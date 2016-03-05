@@ -19,7 +19,7 @@ The app is built into different sections and tools. These include player tools a
 
 
 ## Players<a name="players"></a>
-An account for a user is called a Player Account. A Player Account can have a profile image, a player tag, and a list of characters. There are different player roles (Player, Game Master, or Dungeon Master) with different tools or contributions available. Every account has the role of a player. These will be explained further below.
+An account for a user is called a Player Account. A Player Account has an email and a password. A player can have a profile image, a player tag, and a list of characters. There are different player roles (Player, Game Master, or Dungeon Master) with different tools or contributions available. Every account has the role of a player. These will be explained further below.
 
 ## Dungeon Masters<a name="dm"></a>
 A Player Account with the role of Dungeon Master can create parties of players and start questlines. They can build maps and save them on the server, as well as create their own stories.
