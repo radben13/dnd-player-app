@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Use has_secure_token for password resets
+gem 'has_secure_token'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

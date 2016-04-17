@@ -19,7 +19,25 @@ module Workspace
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
+    
+    # Add email config
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.perform_deliveries = true
+    
+    host = 'dnd-player-app-radben13.c9users.io'
+    config.action_mailer.default_url_options = { host: host }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 465,
+      domain:               'gmail.com',
+      user_name:            ENV['GMAIL_USERNAME'],
+      password:             ENV['GMAIL_PASSWORD'],
+      authentication:       'plain',
+      enable_starttls_auto: true,
+      ssl:                  true
+    }
+    
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end

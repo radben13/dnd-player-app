@@ -5,7 +5,17 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pages#home'
   
-  get 'account' => 'players#show'
+  resources :players do
+    resources :characters
+  end
+  
+  get  'account' => 'players#show'
+  get  'api/player' => 'players#show_json'
+  post 'login' => 'player_sessions#create', as: :new_session
+  get  'login' => 'player_sessions#new', as: :login
+  get  'logout' => 'player_sessions#delete'
+  
+  post 'email_reset_password' => 'email_players#reset_password', as: :reset_password_email
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

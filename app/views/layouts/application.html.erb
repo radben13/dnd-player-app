@@ -3,19 +3,28 @@
 <head>
   <%= render :partial => "shared/head" %>
 </head>
-<body ng-app="role.20">
+<body ng-app="role.20" ng-controller="BodyCtrl as global">
   <%= render :partial => "shared/loading_screen" %>
   <header id="header" ng-controller="HeaderCtrl">
+    <div id="header-wrapper">
     <a id="logo" href="/"><h1>Role 20</h1></a>
     <nav id="header-nav" ng-class="activeMobileMenuClass()">
       <ul>
+        <% if @current_player %>
         <li><a href="/account"><i class="fa fa-user"></i> Profile</a></li>
+        <% else %>
+        <li><a href="/login"><i class="fa fa-user"></i> Login or Register</a></li>
+        <% end %>
         <li><a href="/campaigns"><i class="fa fa-book"></i> Campaigns</a></li>
         <li><a href="/items"><i class="fa fa-shield"></i> Items</a></li>
+        <% if @current_player %>
+        <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+        <% end %>
       </ul>
     </nav>
     <div id="mobile-nav-toggle" ng-click="toggleMobileMenu()" ng-class="activeMobileMenuClass()">
       <i class="fa fa-bars"></i>
+    </div>
     </div>
   </header>
   <% if content_for? :side_bar %>
@@ -24,11 +33,12 @@
     </div>
   <% end %>
   <div id="page-wrapper">
+    <%= render :partial => "shared/flash_messages" %>
     <%= yield %>
   </div>
   
   <footer>
-    <p>&copy;<%= Time.now.year %> RadBen13</p>
+    <p>&copy; <%= Time.now.year %> by RadBen13</p>
     <p>All Rights Reserved</p>
   </footer>
   <%= javascript_include_tag 'application' %>
