@@ -1,0 +1,23 @@
+               Prefix Verb   URI Pattern                                       Controller#Action
+                 root GET    /                                                 pages#home
+    player_characters GET    /players/:player_id/characters(.:format)          characters#index
+                      POST   /players/:player_id/characters(.:format)          characters#create
+ new_player_character GET    /players/:player_id/characters/new(.:format)      characters#new
+edit_player_character GET    /players/:player_id/characters/:id/edit(.:format) characters#edit
+     player_character GET    /players/:player_id/characters/:id(.:format)      characters#show
+                      PATCH  /players/:player_id/characters/:id(.:format)      characters#update
+                      PUT    /players/:player_id/characters/:id(.:format)      characters#update
+                      DELETE /players/:player_id/characters/:id(.:format)      characters#destroy
+              players GET    /players(.:format)                                players#index
+                      POST   /players(.:format)                                players#create
+           new_player GET    /players/new(.:format)                            players#new
+          edit_player GET    /players/:id/edit(.:format)                       players#edit
+               player GET    /players/:id(.:format)                            players#show
+                      PATCH  /players/:id(.:format)                            players#update
+                      PUT    /players/:id(.:format)                            players#update
+                      DELETE /players/:id(.:format)                            players#destroy
+              account GET    /account(.:format)                                players#show
+           api_player GET    /api/player(.:format)                             players#show_json
+          new_session POST   /login(.:format)                                  player_sessions#create
+                login GET    /login(.:format)                                  player_sessions#new
+               logout GET    /logout(.:format)                                 player_sessions#delete

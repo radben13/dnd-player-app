@@ -1,0 +1,157 @@
+// CLEARFIX
+
+.clearfix {
+  @include clearfix;
+}
+
+// PORTLET
+
+.portlet {
+  @include portlet (0);
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+  .portlet-title {
+    display: block;
+    font-size: 36px;
+    font-family: 'Tangerine', cursive;
+    margin: 0 0 10px;
+    padding: 5px 0;
+    border-bottom: 2px solid $body_color;
+    max-width: 500px;
+    clear: both;
+  }
+  .portlet-subtitle {
+    display: inline-block;
+    font-size: 30px;
+    line-height: 30px;
+    font-family: 'Tangerine', cursive;
+    margin: 0 0 10px;
+    padding: 5px 0 0;
+    clear: both;
+    border-bottom: 1px solid;
+  }
+  &.half {
+    clear: none;
+    float: left;
+    box-sizing: border-box;
+    width: calc(50% - 10px);
+    &.right {
+      float: right;
+    }
+    + .portlet.half {
+      float: right;
+      &.left {
+        clear: both;
+        float: left;
+      }
+    }
+  }
+}
+
+.portlet .portlet {
+  border: none;
+  border-radius: none;
+  margin-top: 10px;
+  @include portlet (1);
+  &:first-child {
+    margin-top: 0;
+  }
+  .portlet-title {
+    border-bottom-color: $header_color;
+  }
+  &.half {
+    width: calc(50% - 5px);
+    
+  }
+  @media screen and (min-width: $tablet + 1px) {
+    &.half:first-child + .half {
+      margin-top: 0;
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .portlet.half, .portlet .portlet.half {
+    width: 100%;
+  }
+}
+
+// SPECIAL TEXT STYLES
+
+.flash-message {
+  background: #fff;
+  padding: 5px 10px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  + .flash-message {
+    margin-top: 5px;
+    border-radius: 3px;
+  }
+  &.error {
+    background: #E6D1DB;
+  }
+}
+
+.dev-message {
+  color: $body_color;
+}
+p {
+  margin-bottom: 0;
+}
+
+// FORMS
+
+form {
+  @include clearfix;
+  p:first-child {
+    margin-top: 10px;
+  }
+}
+
+.form-input {
+  display: block;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid $portlet_border_1;
+  padding: 5px;
+  border-radius: 3px;
+  width:  100%;
+  max-width: 300px;
+  margin-top: 10px;
+  clear: both;
+  &:focus {
+    background: lighten($portlet_1, 2%);
+    outline: none;
+  }
+}
+
+.form-button {
+  display: block;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid $portlet_border_1;
+  padding: 5px;
+  border-radius: 3px;
+  margin-top: 10px;
+  margin-right: 10px;
+  clear: both;
+  float: left;
+  & + & {
+    clear: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background: darken($portlet_1, 5%);
+  }
+  &:focus:hover {
+    background: darken($portlet_1, 5%);
+    border-color: darken($portlet_border_1, 10%);
+  }
+}

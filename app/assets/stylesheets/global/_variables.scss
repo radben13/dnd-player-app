@@ -1,0 +1,14 @@
+// COLORS
+$header_color: #545464;
+$header_text_color: #fff;
+$body_color: #A0A0AF;
+
+$portlet_0: #fff;
+$portlet_1: #F4F4F6;
+
+$portlet_border_0: $portlet_1;
+$portlet_border_1: darken($portlet_1, 10%);
+
+// MEDIA QUERIES
+$tablet: 775px;
+$mobile: 500px;

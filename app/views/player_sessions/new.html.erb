@@ -1,0 +1,21 @@
+<div class="portlet" ng-controller="LoginCtrl as login">
+  <div class="portlet half">
+    <h2 class="portlet-title">Login</h2>
+    <%= form_for @logging_player, :url => new_session_path, :method => :post do |f| %>
+      <%= f.email_field :email, :class => "form-input", :placeholder => "Email" %>
+      <%= f.password_field :password, :class => "form-input", :placeholder => "Password" %>
+      <%= f.submit "Login", :class => "form-button" %>
+      <input type="button" class="form-button" ng-hide="login.requestToken" ng-click="login.requestToken = true;" value="Reset Password">
+    <% end %>
+    <div ng-show="login.requestToken" style="margin-top: 10px;">
+      <h3 class="portlet-subtitle">Reset Password</h3>
+      <%= form_tag :action => :reset_password, :controller => :email_players, :method => :post do %>
+        <input type="email" class="form-input" placeholder="Email" name="player[email]">
+        <input type="submit" class="form-button" value="Send Reset Email">
+      <% end %>
+    </div>
+  </div>
+  <div class="portlet half">
+    <%= render :partial => "players/register" %>
+  </div>
+</div>

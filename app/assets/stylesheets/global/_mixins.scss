@@ -1,0 +1,18 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin portlet ($level: 0) {
+  @if ($level == 0) {
+    background: $portlet_0;
+    border: 2px solid $portlet_border_0;
+    border-radius: 3px;
+  } @else {
+    background: $portlet_1;
+  }
+  padding: 10px;
+}

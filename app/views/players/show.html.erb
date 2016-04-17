@@ -1,0 +1,13 @@
+<div class="portlet profile-header">
+  <h2 class="portlet-title">Profile</h2>
+  <div class="profile-details">
+    <div class="portlet-subtitle">Details</div>
+    <div>
+      <p><%= @player.auth_token %></p>
+    </div>
+  </div>
+  <div class="portlet half right">
+    <div class="portlet-subtitle">Characters</div>
+    <%= render :partial => "characters/list", :locals => {:player => @player} %>
+  </div>
+</div>

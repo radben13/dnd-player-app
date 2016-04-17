@@ -1,0 +1,11 @@
+<h2 class="portlet-title">Register</h2>
+<%= form_for Player.new, :method => :post do |f| %>
+  <%= f.email_field :email, :placeholder => "Email", :class => "form-input" %>
+  <%= f.text_field :player_tag, :placeholder => "Player Tag", :class => "form-input" %>
+  <%= f.password_field :password, :placeholder => "Password", :class => "form-input" %>
+  <%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :class => "form-input" %>
+  <div class="clearfix">
+    <p>All fields are required.</p>
+  </div>
+  <%= f.submit "Register", :class => "form-button" %>
+<% end %>
