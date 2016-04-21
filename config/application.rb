@@ -38,6 +38,9 @@ module Workspace
       ssl:                  true
     }
     
+    # Time config
+    Time::DATE_FORMATS[:timezone_ordinal] = "%b %d, %Y %l:%M%P %Z"
+    
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end

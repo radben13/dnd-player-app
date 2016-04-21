@@ -8,6 +8,7 @@ edit_player_character GET    /players/:player_id/characters/:id/edit(.:format) c
                       PATCH  /players/:player_id/characters/:id(.:format)      characters#update
                       PUT    /players/:player_id/characters/:id(.:format)      characters#update
                       DELETE /players/:player_id/characters/:id(.:format)      characters#destroy
+      activate_player GET    /players/:id/activate(.:format)                   players#activate
               players GET    /players(.:format)                                players#index
                       POST   /players(.:format)                                players#create
            new_player GET    /players/new(.:format)                            players#new
@@ -21,3 +22,6 @@ edit_player_character GET    /players/:player_id/characters/:id/edit(.:format) c
           new_session POST   /login(.:format)                                  player_sessions#create
                 login GET    /login(.:format)                                  player_sessions#new
                logout GET    /logout(.:format)                                 player_sessions#delete
+                      GET    /reset_password/:player_id/:auth_token(.:format)  players#new_password
+                      POST   /reset_password/:player_id/:auth_token(.:format)  players#reset_password
+ reset_password_email POST   /email_reset_password(.:format)                   email_players#reset_password

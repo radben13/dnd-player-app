@@ -12,6 +12,10 @@
   float: left;
   width: 100%;
   margin-top: 20px;
+  box-sizing: border-box;
+  &.borderless {
+    border-color: transparent;
+  }
   .portlet-title {
     display: block;
     font-size: 36px;
@@ -40,6 +44,12 @@
     &.right {
       float: right;
     }
+    &.center {
+      clear: both;
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
     + .portlet.half {
       float: right;
       &.left {
@@ -55,6 +65,12 @@
   border-radius: none;
   margin-top: 10px;
   @include portlet (1);
+  &.no-background {
+    background: none;
+  }
+  &.bordered {
+    border-color: $portlet_border_0;
+  }
   &:first-child {
     margin-top: 0;
   }

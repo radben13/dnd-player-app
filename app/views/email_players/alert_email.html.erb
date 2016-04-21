@@ -1,0 +1,6 @@
+<h2 style="margin: 10px 0;">Hey, <%= @player.player_tag || @player.email %>!</h2>
+<% for message in @messages %>
+<p style="margin: 5px 0;">
+  <%= message %>
+</p>
+<% end %>

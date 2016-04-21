@@ -8,23 +8,31 @@ class PlayerSessionsController < ApplicationController
       flash.now[:error] = "You are already logged in as #{@current_player.player_tag || @current_player.email}. Logging into a different account will logout."
     end
     @logging_player = Player.new
+    @new_player = Player.new
+    @requesting_player = Player.new
   end
   
   def create
     if @current_player
       logout
     end
-    player = Player.where(:email => sign_in_params[:email]).take.authenticate(sign_in_params[:password])
-    if player
+    player = Player.where(:email => sign_in_params[:email]).take
+    if !player
+      @logging_player = Player.new(:email => params[:player][:email])
+      @new_player = Player.new
+      @requesting_player = Player.new
+      flash.now[:error] = "No accounts match that player email."
+      render :new
+    elsif player.authenticate(sign_in_params[:password])
       @player_session = PlayerSession.create(player_id: player.id, session_id: session[:session_id])
       @current_player = player
       session[:player_id] = player.id
       flash[:notice] = "You have successfully logged in as #{@current_player[:player_tag] || @current_player[:email]}."
-      pending_path = session[:pending_path]
-      session[:pending_path] = nil
-      redirect_to pending_path || root_path
+      redirect_to session[:pending_path] || root_path
     else
       @logging_player = Player.new(:email => params[:player][:email])
+      @new_player = Player.new
+      @requesting_player = Player.new
       flash.now[:error] = "That email and password did not match."
       render :new
     end
@@ -35,7 +43,7 @@ class PlayerSessionsController < ApplicationController
       logout
       flash[:notice] = "Successfully logged out."
     else
-      flash[:error] = "Logging out is silly when you're not logged in."
+      flash[:error] = "You weren't logged in."
     end
     redirect_to root_path
   end
@@ -46,9 +54,4 @@ class PlayerSessionsController < ApplicationController
     params.require(:player).permit(:email, :password)
   end
   
-  def logout
-    @player_session.destroy
-    @current_player = nil
-    reset_session
-  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417085818) do
+ActiveRecord::Schema.define(version: 20160417204755) do
 
   create_table "character_levels", force: :cascade do |t|
     t.string  "level_class"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160417085818) do
     t.text   "bio"
     t.string "profile_image"
     t.string "auth_token"
+    t.string "activated"
   end
 
   add_index "players", ["email"], name: "index_players_on_email"

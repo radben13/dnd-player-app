@@ -2,19 +2,5 @@
 @import "global/functions";
 @import "global/mixins";
 
-.profile-details {
-  float: left;
-  width: 50%;
-  border: 1px solid $portlet_border_0;
-  border-radius: 3px;
-  padding: 10px;
-  width: calc(50% - 5px);
-  margin-top: 10px;
-}
-
 @media screen and (max-width: $tablet) {
-  .profile-details {
-    float: none;
-    width: 100%
-  }
 }

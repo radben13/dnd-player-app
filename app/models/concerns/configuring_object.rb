@@ -1,10 +1,6 @@
 module ConfiguringObject
   extend ActiveSupport::Concern
   
-  before_save do
-    self.config_data ||= "{}"
-  end
-  
   def get_config
     JSON.parse self.config_data
   end

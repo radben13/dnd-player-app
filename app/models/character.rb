@@ -7,6 +7,9 @@ class Character < ActiveRecord::Base
   has_and_belongs_to_many :items
   has_and_belongs_to_many :special_attributes
   
+  before_save do
+    self.config_data ||= "{}"
+  end
   
   def level
     self.levels.count

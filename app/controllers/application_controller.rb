@@ -29,6 +29,12 @@ class ApplicationController < ActionController::Base
     return false
   end
   
+  def logout
+    @player_session.destroy
+    @current_player = nil
+    reset_session
+  end
+  
   def require_current_player
     if !@current_player
       session[:pending_path] = request.fullpath

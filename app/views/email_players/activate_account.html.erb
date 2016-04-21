@@ -1,0 +1,11 @@
+<h2 style="margin: 10px 0;">Welcome, <%= @player.player_tag || @player.email %>!</h2>
+<p style="margin: 5px 0;">
+  Lore20 is a tool for keeping track of your role playing data.
+  From characters and their gear to journals and campaigns,
+  this site is a valuable tool for your adventuring needs.
+</p>
+<p style="margin: 5px 0;">
+  In order to fully activate your new account, <a href="<%= raw @url %>">click here</a> 
+  or paste the following url into your browser:
+</p>
+<p style="margin: 5px 0;"><%= @url %></p>

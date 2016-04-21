@@ -5,7 +5,13 @@ class Player < ActiveRecord::Base
   has_many :characters, dependent: :destroy
   has_many :roles, dependent: :destroy
   
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  
   accepts_nested_attributes_for :roles
+  
+  before_save do
+    self.activated = self.activated || "not activated"
+  end
   
   after_create do
     self.roles.create(name: "player")

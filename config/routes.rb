@@ -7,6 +7,15 @@ Rails.application.routes.draw do
   
   resources :players do
     resources :characters
+    member do
+      get 'activate'
+    end
+  end
+  
+  resources :items do
+    collection do
+      get 'list'
+    end
   end
   
   get  'account' => 'players#show'
@@ -14,8 +23,10 @@ Rails.application.routes.draw do
   post 'login' => 'player_sessions#create', as: :new_session
   get  'login' => 'player_sessions#new', as: :login
   get  'logout' => 'player_sessions#delete'
+  get  'players/:id/reset_password/:auth_token' => 'players#new_password'
+  post 'players/:id/reset_password' => 'players#reset_password'
   
-  post 'email_reset_password' => 'email_players#reset_password', as: :reset_password_email
+  post 'email_reset_password' => 'players#request_password', as: :send_password_email
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

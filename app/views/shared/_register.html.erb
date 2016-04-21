@@ -1,5 +1,5 @@
-<h2 class="portlet-title">Register</h2>
-<%= form_for Player.new, :method => :post do |f| %>
+<h2 class="portlet-subtitle">Register</h2>
+<%= form_for @new_player, :method => :post do |f| %>
   <%= f.email_field :email, :placeholder => "Email", :class => "form-input" %>
   <%= f.text_field :player_tag, :placeholder => "Player Tag", :class => "form-input" %>
   <%= f.password_field :password, :placeholder => "Password", :class => "form-input" %>

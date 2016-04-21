@@ -1,6 +1,6 @@
 /* global angular */
 
-angular.module("role.20", [])
+angular.module("lore.20", [])
 .directive('loadingScreen', ["$rootScope", "$document", "$timeout", function ($rootScope, $document, $timeout) {
     return {
         link: function ($scope, $element, $attrs) {
